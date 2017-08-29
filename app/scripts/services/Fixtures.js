@@ -18,7 +18,11 @@
     };
 
     var albumMarconi = {
+<<<<<<< HEAD
       title: 'The Telephone'
+=======
+      title: 'The Telephone',
+>>>>>>> ckpt-a4
       artist: 'Guglielmo Marconi',
       label: 'EM',
       year: '1909',
