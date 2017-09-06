@@ -1,15 +1,15 @@
 (function() {
   function seekBar($document) {
-    return {
-      var calculatePercent = function(seekBar, event) {
-        var offsetX = event.pageX - seekBar.offset().left;
-        var seekBarWidth = seekBar.width();
-        var offsetXPercent = offsetX / seekBarWidth;
-        offsetXPercent = Math.max(0, offsetXPercent);
-        offsetXPercent = Math.min(1, offsetXPercent);
-        return offsetXPercent;
-      };
+    var calculatePercent = function(seekBar, event) {
+      var offsetX = event.pageX - seekBar.offset().left;
+      var seekBarWidth = seekBar.width();
+      var offsetXPercent = offsetX / seekBarWidth;
+      offsetXPercent = Math.max(0, offsetXPercent);
+      offsetXPercent = Math.min(1, offsetXPercent);
+      return offsetXPercent;
+    };
 
+    return {
       templateUrl: '/templates/directives/seek_bar.html',
       replace: true,
       restrict: 'E',
@@ -30,7 +30,7 @@
           scope.max = newValue;
         });
 
-        var precentString = function () {
+        var percentString = function () {
           var value = scope.value;
           var max = scope.max;
           var percent = value / max * 100;
@@ -77,5 +77,5 @@
 
   angular
     .module('blocJams')
-    .directive('seekBar', ['seekBar', seekBar]);
+    .directive('seekBar', ['$document', seekBar]);
 })();

@@ -72,6 +72,14 @@
     SongPlayer.currentTime = null;
 
     /**
+    * @desc curent volume (1-100)
+    * @type {Number}
+    */
+
+    SongPlayer.volume = null;
+    SongPlayer.volume = 60;
+
+    /**
     * @function SongPlayer.play
     * @desc Play current or new song
     * @param {Object} song
@@ -123,7 +131,7 @@
       var currentSongIndex = getSongIndex(SongPlayer.currentSong);
       currentSongIndex++;
 
-      if (currentSongIndex > currentAlbum.songs.length) {
+      if (currentSongIndex >= currentAlbum.songs.length) {
         stopSong(SongPlayer.currentSong);
       } else {
         var song = currentAlbum.songs[currentSongIndex];
@@ -141,6 +149,18 @@
       if (currentBuzzObject) {
         currentBuzzObject.setTime(time);
       }
+    };
+
+    /**
+    * @function setVolume
+    * @desc sets the volume
+    * @param {Number} volume
+    */
+    SongPlayer.setVolume = function(volume) {
+      if (currentBuzzObject) {
+        currentBuzzObject.setVolume(volume);
+      }
+      SongPlayer.volume = volume;
     };
 
     return SongPlayer;
